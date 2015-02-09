@@ -88,7 +88,7 @@ http://ftp.jaist.ac.jp/pub/raspberrypi/raspbian/images/raspbian-2013-09-16/
 
         git clone https://github.com/bwattendorf/bbhn-pi-vpn.git
         cd bbhn-pi-vpn
-        git checkout tags/v0.3.0-1
+        git checkout tags/v0.4.0-1
         sh install.sh
 1.  Login to the web application on the Pi:
 http://(wired Ethernet IP of the node):8080/
@@ -122,7 +122,7 @@ Beaglebone Black Installation
 
         git clone https://github.com/bwattendorf/bbhn-pi-vpn.git
         cd bbhn-pi-vpn
-        git checkout tags/v0.3.0-1
+        git checkout tags/v0.4.0-1
         sh install.sh
 1. Login to the web application:
 http://(wired Ethernet IP of the node):8080/
