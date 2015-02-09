@@ -86,6 +86,7 @@ http://ftp.jaist.ac.jp/pub/raspberrypi/raspbian/images/raspbian-2013-09-16/
 1. If installing over an SSH connection to the Pi, then I recommend you install 'screen' (sudo apt-get install screen) to ensure that the installation script is not stopped prematurely if you lose connectivity with the Pi.  This is optional, but I highly recommend using screen if installing over the network.  You can find more info on screen here: http://linux.die.net/man/1/screen
 1.  Run the following commands to download the BBHN-Pi-VPN project and install
 
+        sudo apt-get install git
         git clone https://github.com/bwattendorf/bbhn-pi-vpn.git
         cd bbhn-pi-vpn
         git checkout tags/v0.3.0-1
