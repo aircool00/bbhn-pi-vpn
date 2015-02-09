@@ -137,7 +137,7 @@ Interface "{wifi_adapter_name}" "tun0" "tun1" "tun2" "tun3" "tun4" "tun5" "tun6"
 # Fisheye mechanism for TC messages 0=off, 1=on
 
 LinkQualityFishEye 1
-
+LinkQualityAlgorithm "etx_ffeth"
 
 # IP version to use (4 or 6)
 
