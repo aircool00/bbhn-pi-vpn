@@ -116,7 +116,13 @@
     </div>
   </div>
 </div>
-
+<div class="row">
+  <div class="span8">
+    <p>
+      <h6>BBHN-Pi-VPN Version:&nbsp;<?php echo Configure::read('App.version'); ?></h6>
+    </p>
+  </div>
+</div>
 <!-- Modal -->
 <div id="mapModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">

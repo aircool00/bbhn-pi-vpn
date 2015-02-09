@@ -205,9 +205,7 @@ $cakeDescription = __d('cake_dev', __('BBHN-Pi-VPN'));
   <div class="container">
     <?php echo $this->Session->flash(); ?>
     <?php echo $this->fetch('content'); ?>
-    <p>
-      <h6>&nbsp &nbsp  BBHN-Pi-VPN Version:&nbsp;<?php echo Configure::read('App.version'); ?></h6>
-    </p>
+    
   </div>
 
   <?php echo $this->element('sql_dump'); ?>
