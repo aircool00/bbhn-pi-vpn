@@ -173,7 +173,7 @@ sudo cp ${PROJECT_HOME}/src/etc/default/olsrd /etc/default/olsrd
 
 cd /var/tmp
 rm -rf /var/tmp/olsrd
-rm -rf /var/tmp/bbhn_packages
+
 
 sudo rm -f /etc/olsrd.conf
 sudo ln -fs /etc/olsrd/olsrd.conf /etc/olsrd.conf
