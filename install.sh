@@ -37,7 +37,8 @@ sudo apt-get install -y \
     gpsd-clients \
     libnet-gpsd3-perl \
     ntp \
-    vtun
+    tcpdump \
+	vtun
     #ddclient
 	
 	
