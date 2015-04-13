@@ -40,7 +40,9 @@ sudo apt-get install -y \
     tcpdump \
 	vtun
     #ddclient
-	
+
+# Remove ifplugd if present, as it interfaces with olsrd
+sudo apt-get remove -y ifplugd	
 	
 # Install cakephp with Pear
 sudo pear channel-discover pear.cakephp.org
@@ -134,9 +136,6 @@ sudo ln -fs ../mods-available/rewrite.load
 sudo cp ${PROJECT_HOME}/src/etc/apache2/conf.d/hsmm-pi.conf /etc/apache2/conf.d/hsmm-pi.conf
 sudo service apache2 restart
 
-# Download BBHN packages (needed for olsrd patch)
-cd /var/tmp
-git clone git://ubnt.hsmm-mesh.org/bbhn_packages
 
 # Download and build olsrd
 cd /var/tmp
@@ -144,11 +143,9 @@ git clone git://olsr.org/olsrd.git
 cd olsrd
 
 
-# Checkout the latest 0.6.7 release, have seen intermittent problems with 0.6.5
-git checkout release-0.6.7
+# Checkout the latest 0.6.8 
+git checkout release-0.6.8
 
-# Apply BBHN patch to olsrd
-patch -p1 < ../bbhn_packages/net/olsrd/patches/002-mode_secure-timediff-fix
 
 # patch the Makefile configuration to produce position-independent code (PIC)
 # applies only to ARM architecture (i.e. Beaglebone/Beagleboard)
