@@ -77,10 +77,14 @@ sudo chmod -R 775 tmp
 
 # NOTE:add change chown on /etc/vtund.conf and file
 # Set permissions on system files to give www-data group write priv's
-for file in /etc/hosts /etc/hostname /etc/resolv.conf /etc/vtund.conf /etc/default/vtun /etc/network/interfaces /etc/rc.local /etc/ntp.conf /etc/default/gpsd /etc/dhcp/dhclient.conf; do
+for file in /etc/hosts /etc/hostname /etc/resolv.conf /etc/default/vtun /etc/network/interfaces /etc/rc.local /etc/ntp.conf /etc/default/gpsd /etc/dhcp/dhclient.conf; do
     sudo chgrp www-data ${file}
     sudo chmod g+w ${file}
 done
+
+sudo chgrp www-data /etc/vtund.conf 
+sudo chmod 755 /etc/vtund.conf
+
 
 sudo chgrp www-data /etc/dnsmasq.d
 sudo chmod 775 /etc/dnsmasq.d

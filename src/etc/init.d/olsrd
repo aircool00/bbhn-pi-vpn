@@ -26,6 +26,8 @@ DESC=olsrd
 
 PID_FILE=/var/run/$NAME.pid
 
+modprobe ip_gre
+
 test -x $DAEMON || exit 0
 
 # Include olsrd defaults if available
