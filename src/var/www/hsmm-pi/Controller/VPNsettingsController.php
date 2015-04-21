@@ -1,5 +1,5 @@
 <?php
-class WifiScanController extends AppController
+class VPNsettingsController extends AppController
 {
   public $components = array('RequestHandler', 'Session');
     
