@@ -4,6 +4,60 @@
   <p><h1>VPN Settings</h1></p>
 </div>
 
+<span class="pull-right">
+<?php echo $this->Form->submit(__('Save'), array('name' => 'submit', 'div' => false, 'class' => 'btn btn-primary')); ?>
+</span>
+<p></p>
+
+
+<table class="table table-striped" >
+
+        <colgroup>
+                <col class="col-md-1">
+                <col class="col-md-1">
+                <col class="col-md-1">
+                <col class="col-md-1">
+
+        </colgroup
+
+        <tbody>
+        <tr></tr>
+		<tr>
+		<td>Client Settings</td>
+		</tr>
+        <tr>
+        <th>Enabled</th>
+        <th>Password</th>
+        <th>Client IP Address</th>
+        <th>Server IP Address</th>
+        </tr>
+
+         <td>
+                <?php
+                        echo $this->Form->input('client_enabled', array('label' => __(' '), 'type' => 'checkbox'));
+                        ?>
+        </td>
+
+        <td>
+                <?php
+                        echo $this->Form->input('client_one_password', array('label' => __(' ')));
+                        ?>
+        </td>
+        <td>
+                <?php
+                        echo $this->Form->input('client_one_ip', array('label' => __(' ')));
+                        ?>
+        </td>
+        <td>
+                <?php
+                        echo $this->Form->input('client_one_server_ip', array('label' => __(' ')));
+                        ?>
+        </td>
+</table>
+
+
+	 
+
 <table class="table table-striped">
         <colgroup>
             <col class="col-md-1">
@@ -15,6 +69,10 @@
         </colgroup>
         <tbody>
         <tr>
+		<td>Server Settings</td>
+		</tr>
+				
+		<tr>
 	    <th>Clent Number</th>		
             <th>Enabled</th>
             <th>Client Callsign</th>
