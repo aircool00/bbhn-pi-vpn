@@ -40,17 +40,17 @@
 
         <td>
                 <?php
-                        echo $this->Form->input('client_one_password', array('label' => __(' ')));
+                        echo $this->Form->input('client_password', array('label' => __(' ')));
                         ?>
         </td>
         <td>
                 <?php
-                        echo $this->Form->input('client_one_ip', array('label' => __(' ')));
+                        echo $this->Form->input('client_ip', array('label' => __(' ')));
                         ?>
         </td>
         <td>
                 <?php
-                        echo $this->Form->input('client_one_server_ip', array('label' => __(' ')));
+                        echo $this->Form->input('client_server_ip', array('label' => __(' ')));
                         ?>
         </td>
 </table>
