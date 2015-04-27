@@ -1,5 +1,5 @@
 <?php
-class VPNsettingsController extends AppController
+class VPNsettingsController extends AppController{
 	public $helpers = array('Html', 'Session');
 	public $components = array('RequestHandler', 'Session');
 
@@ -132,7 +132,7 @@ public function edit($id = null) {
 										 $network_setting['NetworkSetting']['server_dns']), $vtun_conf);
 										 
 	file_put_contents('/etc/default/vtun', $vtun_conf_output);
-	
+	}	
 }
 ?>	
 	
