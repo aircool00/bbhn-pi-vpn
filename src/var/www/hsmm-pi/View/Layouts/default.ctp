@@ -154,7 +154,7 @@ $cakeDescription = __d('cake_dev', __('BBHN-Pi-VPN'));
                      echo $this->Html->link("<i class=\"icon-wrench\"></i>&nbsp;".__('VPN Settings'),
                                             array(
                                                   'controller' => 'VPNsettings',
-                                                  'action' => 'index'),
+                                                  'action' => 'edit/1'),
                                             array('escape' => false));
                   ?>
                 </li>
