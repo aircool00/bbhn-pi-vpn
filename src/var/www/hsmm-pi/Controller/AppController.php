@@ -51,6 +51,11 @@ class AppController extends Controller
     return $this->NetworkSetting->findById(1);
   }
 
+  protected function get_vpn_settings() {
+    $this->loadModel('VPNsettings');
+    return $this->VPNsettings->findById(1);
+  }
+  
   protected function get_network_services() {
     $this->loadModel('NetworkService');
     return $this->NetworkService->find('all');
