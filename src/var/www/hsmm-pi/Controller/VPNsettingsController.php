@@ -5,49 +5,38 @@ class VPNsettingsController extends AppController{
 	public function index() {}
 	
 public function edit($id = null) {
-    $network_setting = $this->NetworkSetting->findById($id);
+    $vpn_settings = $this->VPNsettings->findById($id);
 
-    if (!$network_setting) {
+    if (!$vpn_settings) {
       throw new NotFoundException(__('Invalid setting'));
     }
 
     if ($this->request->isPost() || $this->request->isPut()) {
-      if ($this->NetworkSetting->save($this->request->data)) {
-	$latest_network_setting = $this->get_network_settings();
+      if ($this->VPNsettings->save($this->request->data)) {
+	$latest_vpn_settings = $this->get_vpn_settings();
 	$network_services = $this->get_network_services();
 	$location = $this->get_location();
 
 	
 	
-	$this->render_vpn_client_config($latest_network_setting);
-	$this->render_vtun_config($latest_network_setting);
+	$this->render_vpn_client_config($latest_vpn_settings);
+	$this->render_vtun_config($latest_vpn_settings);
 	
 	$this->Session->setFlash('Your settings have been saved and will take effect on the next reboot: <a href="#rebootModal" data-toggle="modal" class="btn btn-primary">Reboot</a>',
 				 'default', array('class' => 'alert alert-success'));
       } else {
 	$this->Session->setFlash('Unable to update your settings, please review any validation errors.', 'default', array('class' => 'alert alert-error'));
       }
-    } else {
-      // perform some checks in the case of an HTTP GET
-      if ($network_setting['NetworkSetting']['wifi_ip_address'] == NULL) {
-	// if no WIFI IP is set, then use one derived from the adapter MAC address
-	$mac_file = '/sys/class/net/'.$network_setting['NetworkSetting']['wifi_adapter_name'].'/address';
-	if (file_exists($mac_file)) {
-	  $mac_address = explode(':', file_get_contents($mac_file));
-	  $network_setting['NetworkSetting']['wifi_ip_address'] = 
-	    '10.'.
-	    hexdec($mac_address[3]).'.'.
-	    hexdec($mac_address[4]).'.'.
-	    hexdec($mac_address[5]);
+    } 
 	}
       }
     }
 
     if (!$this->request->data) {
-      $this->request->data = $network_setting;
+      $this->request->data = $vpn_settings;
     }
 
-    $this->set('wired_interface_mode', $network_setting['NetworkSetting']['wired_interface_mode']);
+    $this->set('wired_interface_mode', $vpn_settings['VPNsettings']['wired_interface_mode']);
   }
 
 //this is a for vtund.conf to add the callsign, ip addresses, and passwords 
