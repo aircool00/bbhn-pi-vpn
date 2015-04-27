@@ -23,22 +23,24 @@ public function edit($id = null) {
 	$this->render_vtun_config($latest_vpn_settings);
 	
 	$this->Session->setFlash('Your settings have been saved and will take effect on the next reboot: <a href="#rebootModal" data-toggle="modal" class="btn btn-primary">Reboot</a>',
-				 'default', array('class' => 'alert alert-success'));
+		
+		'default', array('class' => 'alert alert-success'));
+	  
       } else {
 	$this->Session->setFlash('Unable to update your settings, please review any validation errors.', 'default', array('class' => 'alert alert-error'));
       }
-    } 
+     
+	
 	}
-      }
-    }
+    
 
     if (!$this->request->data) {
       $this->request->data = $vpn_settings;
-    }
+    
 
     $this->set('wired_interface_mode', $vpn_settings['VPNsettings']['wired_interface_mode']);
   }
-
+}
 //this is a for vtund.conf to add the callsign, ip addresses, and passwords 
   private function render_vpn_client_config($network_setting)  {
 	$vpnclient_conf = file_get_contents(WWW_ROOT . "/files/VPN/vtund.conf.template");
