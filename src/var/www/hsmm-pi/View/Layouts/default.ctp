@@ -149,11 +149,11 @@ $cakeDescription = __d('cake_dev', __('BBHN-Pi-VPN'));
                                           array('escape' => false));
                   ?>
                 </li>
-				<li <?php if (strstr($this->here, '/hsmm-pi/VPNsettings') != FALSE) { echo 'class="active"'; }  ?>>
+				<li <?php if (strstr($this->here, '/hsmm-pi/VpnSettings') != FALSE) { echo 'class="active"'; }  ?>>
                   <?php
                      echo $this->Html->link("<i class=\"icon-wrench\"></i>&nbsp;".__('VPN Settings'),
                                             array(
-                                                  'controller' => 'VPNsettings',
+                                                  'controller' => 'VpnSettings',
                                                   'action' => 'edit/1'),
                                             array('escape' => false));
                   ?>
