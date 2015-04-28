@@ -2,8 +2,7 @@
 class VPNsettingsController extends AppController{
 	public $helpers = array('Html', 'Session');
 	public $components = array('RequestHandler', 'Session');
-	public function index() {}
-	
+		
 public function edit($id = null) {
     $vpn_settings = $this->VPNsettings->findById($id);
 

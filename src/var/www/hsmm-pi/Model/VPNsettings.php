@@ -17,7 +17,7 @@ class VPNsettings extends AppModel {
 			   'wan_dns2' => array('rule' => array('ip'), 'message' => 'Please supply a valid IP address.'),
 			   'node_name' => array('required' => array('rule' => array('notEmpty'), 'message' => 'A globally unique nodename with your callsign is required')),
 			   'mesh_olsrd_secure_key' => array('required' => array('rule' => array('notEmpty'), 'message' => 'A secure key value is required')),
-			   'callsign' => array('required' => array('rule' => array('notEmpty'), 'message' => 'A valid callsign is required'), array('rule' => array('between', 3, 9), 'message' => 'Callsign must be between 3 and 9 characters')), 
+			   'client_one_callsign' => array('required' => array('rule' => array('notEmpty'), 'message' => 'A valid callsign is required'), array('rule' => array('between', 3, 9), 'message' => 'Callsign must be between 3 and 9 characters')), 
 			   'ntp_server' => array('required' => array('rule' => array('notEmpty'), 'message' => 'A NTP server is required')),
                
 			   );
