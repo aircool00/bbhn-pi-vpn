@@ -155,10 +155,14 @@ $cakeDescription = __d('cake_dev', __('BBHN-Pi-VPN'));
                                             array(
 <<<<<<< HEAD
                                                   'controller' => 'VPNsettings',
+<<<<<<< HEAD
 =======
                                                   'controller' => 'VpnSettings',
 >>>>>>> parent of a1f04f2... reset
                                                   'action' => 'edit/1'),
+=======
+                                                  'action' => 'index'),
+>>>>>>> parent of 896f267... updated the view layout so it points to the edit vpnsettings edit file
                                             array('escape' => false));
                   ?>
                 </li>
