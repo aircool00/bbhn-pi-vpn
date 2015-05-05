@@ -26,9 +26,7 @@ sudo apt-get install -y \
     apache2 \
     php5 \
     sqlite \
-    sqlite3 \
-	phpunit \
-	php-pear \
+    php-pear \
     php5-sqlite  \
     dnsmasq \
     sysv-rc-conf \
