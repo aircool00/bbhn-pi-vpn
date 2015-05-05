@@ -153,13 +153,8 @@ $cakeDescription = __d('cake_dev', __('BBHN-Pi-VPN'));
                   <?php
                      echo $this->Html->link("<i class=\"icon-wrench\"></i>&nbsp;".__('VPN Settings'),
                                             array(
-<<<<<<< HEAD
                                                   'controller' => 'VpnSettings',
                                                   'action' => 'edit/1'),
-=======
-                                                  'controller' => 'VPNsettings',
-                                                  'action' => 'index'),
->>>>>>> parent of 896f267... updated the view layout so it points to the edit vpnsettings edit file
                                             array('escape' => false));
                   ?>
                 </li>
