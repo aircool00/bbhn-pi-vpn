@@ -16,7 +16,6 @@
  * @since         CakePHP(tm) v 0.10.0.1076
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
-
 $cakeDescription = __d('cake_dev', __('BBHN-Pi-VPN'));
 ?>
 <!DOCTYPE html>
@@ -51,7 +50,7 @@ $cakeDescription = __d('cake_dev', __('BBHN-Pi-VPN'));
     <!-- Reboot Modal -->
     <div id="rebootModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">Ã—</button>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         <h3 id="myModalLabel"><? echo __('Reboot Confirmation'); ?></h3>
       </div>
       <div class="modal-body">
@@ -71,7 +70,7 @@ $cakeDescription = __d('cake_dev', __('BBHN-Pi-VPN'));
     <!-- Shutdown Modal -->
     <div id="shutdownModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">Ã—</button>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         <h3 id="myModalLabel"><? echo __('Shutdown Confirmation'); ?></h3>
       </div>
       <div class="modal-body">
@@ -153,16 +152,8 @@ $cakeDescription = __d('cake_dev', __('BBHN-Pi-VPN'));
                   <?php
                      echo $this->Html->link("<i class=\"icon-wrench\"></i>&nbsp;".__('VPN Settings'),
                                             array(
-<<<<<<< HEAD
                                                   'controller' => 'VPNsettings',
-<<<<<<< HEAD
-=======
-                                                  'controller' => 'VpnSettings',
->>>>>>> parent of a1f04f2... reset
-                                                  'action' => 'edit/1'),
-=======
                                                   'action' => 'index'),
->>>>>>> parent of 896f267... updated the view layout so it points to the edit vpnsettings edit file
                                             array('escape' => false));
                   ?>
                 </li>
