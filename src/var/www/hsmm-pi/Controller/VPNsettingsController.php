@@ -1,18 +1,18 @@
 <?php
-class VPNsettingsController extends AppController{
+class VpnSettingsController extends AppController{
 	public $helpers = array('Html', 'Session');
 	public $components = array('RequestHandler', 'Session');
 	public function index() {}
 	
 public function edit($id = null) {
-    $vpn_settings = $this->VPNsettings->findById($id);
+    $vpn_settings = $this->VpnSetting->findById($id);
 
     if (!$vpn_settings) {
       throw new NotFoundException(__('Invalid setting'));
     }
 
     if ($this->request->isPost() || $this->request->isPut()) {
-      if ($this->VPNsettings->save($this->request->data)) {
+      if ($this->VpnSetting->save($this->request->data)) {
 	$latest_vpn_settings = $this->get_vpn_settings();
 	$network_services = $this->get_network_services();
 	$location = $this->get_location();

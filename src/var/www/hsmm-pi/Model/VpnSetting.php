@@ -1,5 +1,5 @@
 <?php
-class VPNsettings extends AppModel {
+class VpnSetting extends AppModel {
 
   public $validate = array(
 			   'wifi_adapter_name' => array('required' => array('rule' => array('notEmpty'), 'message' => 'A WIFI adapter name is required')),
