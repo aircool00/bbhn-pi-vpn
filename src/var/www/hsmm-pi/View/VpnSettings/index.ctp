@@ -16,7 +16,10 @@
 		<td><?php echo $vpnsetting ['VpnSetting']['password']; ?> </td>
 		<td><?php echo $vpnsetting ['VpnSetting']['client_ip']; ?> </td>
 		<td><?php echo $vpnsetting ['VpnSetting']['server_ip']; ?> </td>
-		<td><?php echo $this->Html->link('Edit', array('action'=>'edit', $vpnsetting ['VpnSetting']['id'])); ?> </td>	
+		<td>
+		<?php echo $this->Html->link('Edit', array('action'=>'edit', $vpnsetting ['VpnSetting']['id'])); ?>
+		<?php echo $this->Html->link('Delete', array('action'=>'delete', $vpnsetting ['VpnSetting']['id']), NULL, 'Are you sure you want to delete this client?'); ?>
+		</td>	
 
 	</tr>
 

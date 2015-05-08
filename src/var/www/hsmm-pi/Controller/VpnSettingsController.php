@@ -28,11 +28,17 @@ Public function edit($id = null){
 	 if($this->request->is('post')) {
 		$this->data = $this->VpnSetting->read(NULL, $id);
 		} else {
-		  if($this->Post->save($this->data)) {
+		  if($this->VpnSetting->save($this->data)) {
 			$this->Session->setFlash('The Client data has been updated');
-			$this->redirect(array('action'=>'view', $id));
+			$this->redirect(array('action'=>'index'));
 		}
 	}
+}
+
+Public function delete($id = null){
+        $this->VpnSetting->delete($id);
+        $this->Session->setFlash('The Client data has been deleted');
+        $this->redirect(array('action'=>'index'));
 }
 
 
