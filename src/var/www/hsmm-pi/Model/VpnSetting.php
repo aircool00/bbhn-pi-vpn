@@ -2,11 +2,11 @@
 class VpnSetting extends AppModel {
 
   public $validate = array(
-			   'wifi_adapter_name' => array('required' => array('rule' => array('notEmpty'), 'message' => 'A WIFI adapter name is required')),
-			   'wifi_ssid' => array('required' => array('rule' => array('notEmpty'), 'message' => 'An SSID is required')),
-			   'wifi_netmask' => array('required' => array('rule' => '/^(((128|192|224|240|248|252|254)\.0\.0\.0)|(255\.(0|128|192|224|240|248|252|254)\.0\.0)|(255\.255\.(0|128|192|224|240|248|252|254)\.0)|(255\.255\.255\.(0|128|192|224|240|248|252|254)))$/i', 'message' => 'A valid netmask is required')),
-			   'wifi_ip_address' => array('rule' => array('ip'), 'message' => 'Please supply a valid IP address.'),
-			   'lan_ip_address' => array('rule' => array('ip'), 'message' => 'Please supply a valid IP address.'),
+			   'enabled1' => array('required' => array('rule' => array('notEmpty'), 'message' => 'A WIFI adapter name is required')),
+			   'callsign1' => array('required' => array('rule' => array('notEmpty'), 'message' => 'An SSID is required')),
+			   'password1' => array('required' => array('rule' => '/^(((128|192|224|240|248|252|254)\.0\.0\.0)|(255\.(0|128|192|224|240|248|252|254)\.0\.0)|(255\.255\.(0|128|192|224|240|248|252|254)\.0)|(255\.255\.255\.(0|128|192|224|240|248|252|254)))$/i', 'message' => 'A valid netmask is required')),
+			   'client_ip1' => array('rule' => array('ip'), 'message' => 'Please supply a valid IP address.'),
+			   'server_ip1' => array('required' => array('rule' => array('notEmpty'), 'message' => 'Please supply a valid IP address.')),
 			   'lan_netmask' => array('required' => array('rule' => '/^(((128|192|224|240|248|252|254)\.0\.0\.0)|(255\.(0|128|192|224|240|248|252|254)\.0\.0)|(255\.255\.(0|128|192|224|240|248|252|254)\.0)|(255\.255\.255\.(0|128|192|224|240|248|252|254)))$/i', 'message' => 'A valid netmask is required')),
 			   'lan_dhcp_start' => array('number' => array('rule' => array('range', 0, 254), 'message' => 'A DHCP address between 0 and 254 is required')),
 			   'lan_dhcp_end' => array('number' => array('rule' => array('range', 0, 254), 'message' => 'A DHCP address between 0 and 254 is required')),

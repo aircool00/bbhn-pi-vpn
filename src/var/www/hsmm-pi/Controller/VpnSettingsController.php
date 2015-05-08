@@ -1,46 +1,41 @@
 <?php
 class VpnSettingsController extends AppController{
+	
+	var $name = 'VpnSettings';
+
+
 	public $helpers = array('Html', 'Session');
 	public $components = array('RequestHandler', 'Session');
-	public function index() {}
-	
-public function edit($id = null) {
-    $vpn_settings = $this->VpnSetting->findById($id);
-
-    if (!$vpn_settings) {
-      throw new NotFoundException(__('Invalid setting'));
-    }
-
-    if ($this->request->isPost() || $this->request->isPut()) {
-      if ($this->VpnSetting->save($this->request->data)) {
-	$latest_vpn_settings = $this->get_vpn_settings();
-	$network_services = $this->get_network_services();
-	$location = $this->get_location();
-
-	
-	
-	$this->render_vpn_client_config($latest_vpn_settings);
-	$this->render_vtun_config($latest_vpn_settings);
-	
-	$this->Session->setFlash('Your settings have been saved and will take effect on the next reboot: <a href="#rebootModal" data-toggle="modal" class="btn btn-primary">Reboot</a>',
+	public function index() {
 		
-		'default', array('class' => 'alert alert-success'));
-	  
-      } else {
-	$this->Session->setFlash('Unable to update your settings, please review any validation errors.', 'default', array('class' => 'alert alert-error'));
-      }
-     
-	
-	}
-    
+		$this->set('vpnsettings', $this->VpnSetting->find('all'));
 
-    if (!$this->request->data) {
-      $this->request->data = $vpn_settings;
-    
 
-    $this->set('wired_interface_mode', $vpn_settings['VPNsettings']['wired_interface_mode']);
-  }
 }
+
+Public function add() {
+	if($this->request->is('post')) {
+		if($this->VpnSetting->save($this->data)){
+		 $this->Session->setFlash('Successfully Saved');
+		 $this->redirect(array('action'=>'index'));
+		} else {
+		 $this->Session->setFlash('The Data Was not saved, Please try again');
+}
+}
+}
+
+Public function edit($id = null){
+	 if($this->request->is('post')) {
+		$this->data = $this->VpnSetting->read(NULL, $id);
+		} else {
+		  if($this->Post->save($this->data)) {
+			$this->Session->setFlash('The Client data has been updated');
+			$this->redirect(array('action'=>'view', $id));
+		}
+	}
+}
+
+
 //this is a for vtund.conf to add the callsign, ip addresses, and passwords 
   private function render_vpn_client_config($network_setting)  {
 	$vpnclient_conf = file_get_contents(WWW_ROOT . "/files/VPN/vtund.conf.template");
