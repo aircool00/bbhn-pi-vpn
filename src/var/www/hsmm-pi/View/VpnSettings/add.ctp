@@ -12,3 +12,6 @@ echo $this->Form->end('Save Client Data');
 
 
 ?>
+<?php
+echo $this->Form->end();
+    ?>

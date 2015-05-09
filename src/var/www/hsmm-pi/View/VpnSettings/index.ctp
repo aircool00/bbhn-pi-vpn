@@ -60,4 +60,6 @@
 		<th>Action</th>	
 
 	</tr>
-	
+	<?php
+echo $this->Form->end();
+    ?>

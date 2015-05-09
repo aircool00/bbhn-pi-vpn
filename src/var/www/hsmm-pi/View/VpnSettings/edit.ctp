@@ -12,3 +12,6 @@ echo $this->Form->end('Save Settings');
 
 ?> 
 
+<?php
+echo $this->Form->end();
+    ?>
