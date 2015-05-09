@@ -41,6 +41,9 @@ Public function delete($id = null){
         $this->redirect(array('action'=>'index'));
 }
 
+Public function email(){
+	
+}
 
 //this is a for vtund.conf to add the callsign, ip addresses, and passwords 
   private function render_vpn_client_config($network_setting)  {
