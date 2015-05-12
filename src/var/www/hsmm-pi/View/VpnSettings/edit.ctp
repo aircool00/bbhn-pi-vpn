@@ -1,7 +1,7 @@
 <h2>Edit VPN Settings</h2>
 
 <?php
-echo $this->Form->create('VpnSetting', array(=>'edit'));
+echo $this->Form->create('VpnSetting');
 echo $this->Form->input('enabled');
 echo $this->Form->input('callsign');
 echo $this->Form->input('password');

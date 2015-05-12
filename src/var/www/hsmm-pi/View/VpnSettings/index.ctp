@@ -9,14 +9,16 @@
 	<th>Status</th>
 	<th>Action</th>
 </tr>
-	<?php foreach ($vpnclient as $vpnclient): ?>
-        <td><?php echo $vpnclient ['VpnClient']['enabled']; ?> </td>
+	<?php foreach ($vpnclients as $vpnclient): ?>
+        
+	<tr>
+	<td><?php echo $vpnclient ['VpnClient']['enabled']; ?> </td>
         <td><?php echo $vpnclient ['VpnClient']['password']; ?> </td>
         <td><?php echo $vpnclient ['VpnClient']['client_ip']; ?> </td>
         <td><?php echo $vpnclient ['VpnClient']['server_ip']; ?> </td>
         <td>online</td>
         <td><?php echo $this->Html->link('Edit', array('action'=>'editclient', $vpnclient ['VpnClient']['id'])); ?></td>
-
+</tr>
         <?php endforeach ?>
 
 </table>
@@ -61,11 +63,11 @@
 		<th>Action</th>	
 
 	</tr>
-	<?php foreach ($vpns as $vpn): ?>
-        <td><?php echo $vpn ['Vpn']['vpn_network']; ?> </td>
-        <td><?php echo $vpn ['Vpn']['server_port']; ?> </td>
+	<?php foreach ($vpnservers as $vpnserver): ?>
+        <td><?php echo $vpnserver ['VpnServer']['server_network']; ?> </td>
+        <td><?php echo $vpnserver ['VpnServer']['server_port']; ?> </td>
         
-        <td><?php echo $this->Html->link('Edit', array('action'=>'editvpn', $vpn ['Vpn']['id'])); ?></td>
+        <td><?php echo $this->Html->link('Edit', array('action'=>'editvpn', $vpnserver ['VpnServer']['id'])); ?></td>
 
         <?php endforeach ?>
 	

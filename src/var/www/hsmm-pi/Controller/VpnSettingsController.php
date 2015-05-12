@@ -10,9 +10,9 @@ class VpnSettingsController extends AppController{
 		
 		$this->set('vpnsettings', $this->VpnSetting->find('all'));
 		$this->loadmodel('VpnClient');
-        $this->set('vpnclient', $this->VpnClient->find('all'));
-		$this->loadmodel ('Vpn');
-		$this->set('vpn', $this->Vpn->find('all'));
+        $this->set('vpnclients', $this->VpnClient->find('all'));
+		$this->loadmodel ('VpnServer');
+		$this->set('vpnservers', $this->Vpn->find('all'));
 
 
 }
@@ -28,15 +28,28 @@ Public function add() {
 }
 }
 
-Public function edit($id = null){
-	 if($this->request->is('post')) {
-		$this->data = $this->VpnSetting->read(NULL, $id);
-		} else {
-		  if($this->VpnSetting->save($this->data)) {
-			$this->Session->setFlash('The Client data has been updated');
-			$this->redirect(array('action'=>'index'));
-		}
-	}
+public function edit($id = null) {
+    if (!$id) {
+        throw new NotFoundException(__('Invalid post'));
+    }
+
+    $post = $this->VpnSetting->findById($id);
+    if (!$post) {
+        throw new NotFoundException(__('Invalid post'));
+    }
+
+    if ($this->request->is(array('post', 'put'))) {
+        $this->VpnSetting->id = $id;
+        if ($this->VpnSetting->save($this->request->data)) {
+            $this->Session->setFlash(__('Your post has been updated.'));
+            return $this->redirect(array('action' => 'index'));
+        }
+        $this->Session->setFlash(__('Unable to update your post.'));
+    }
+
+    if (!$this->request->data) {
+        $this->request->data = $post;
+    }
 }
 
 Public function delete($id = null){
@@ -44,6 +57,57 @@ Public function delete($id = null){
         $this->Session->setFlash('The Client data has been deleted');
         $this->redirect(array('action'=>'index'));
 }
+
+public function editclient($id = null) {
+    $this->loadmodel('VpnClient');
+	if (!$id) {
+        throw new NotFoundException(__('Invalid post'));
+    }
+
+    $post = $this->VpnSetting->findById($id);
+    if (!$post) {
+        throw new NotFoundException(__('Invalid post'));
+    }
+
+    if ($this->request->is(array('post', 'put'))) {
+        $this->VpnSetting->id = $id;
+        if ($this->VpnSetting->save($this->request->data)) {
+            $this->Session->setFlash(__('Your post has been updated.'));
+            return $this->redirect(array('action' => 'index'));
+        }
+        $this->Session->setFlash(__('Unable to update your post.'));
+    }
+
+    if (!$this->request->data) {
+        $this->request->data = $post;
+    }
+}
+
+public function editserver($id = null) {
+    $this->loadmodel ('VpnServer');
+	if (!$id) {
+        throw new NotFoundException(__('Invalid post'));
+    }
+
+    $post = $this->VpnServer->findById($id);
+    if (!$post) {
+        throw new NotFoundException(__('Invalid post'));
+    }
+
+    if ($this->request->is(array('post', 'put'))) {
+        $this->VpnServer->id = $id;
+        if ($this->VpnServer->save($this->request->data)) {
+            $this->Session->setFlash(__('Your post has been updated.'));
+            return $this->redirect(array('action' => 'index'));
+        }
+        $this->Session->setFlash(__('Unable to update your post.'));
+    }
+
+    if (!$this->request->data) {
+        $this->request->data = $post;
+    }
+}
+
 
 Public function email(){
 	
