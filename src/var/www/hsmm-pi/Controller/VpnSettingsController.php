@@ -12,7 +12,7 @@ class VpnSettingsController extends AppController{
 		$this->loadmodel('VpnClient');
         $this->set('vpnclients', $this->VpnClient->find('all'));
 		$this->loadmodel ('VpnServer');
-		$this->set('vpnservers', $this->Vpn->find('all'));
+		$this->set('vpnservers', $this->VpnServer->find('all'));
 
 
 }
