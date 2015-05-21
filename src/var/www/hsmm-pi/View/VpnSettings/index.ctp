@@ -1,5 +1,6 @@
 <h2>VPN Settings</h2>
  <h4>VPN Client settings</h4>
+ <?php echo $this->Html->link('Edit', array('action'=>'editclient', $vpnclient ['VpnClient']['id'])); ?>
 <table>
  <tr>
 	<th>Enabled</th>
