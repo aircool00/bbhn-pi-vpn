@@ -12,8 +12,22 @@ class VpnSettingsController extends AppController{
 		$this->loadmodel('VpnClient');
         $this->set('vpnclients', $this->VpnClient->find('all'));
 		$this->loadmodel ('VpnServer');
+		 
 		$this->set('vpnservers', $this->VpnServer->find('all'));
-
+        $this->loadmodel ('Vpnsetting');
+		if($this->request->is('post')) {
+		if($this->VpnSetting->save($this->data)){
+		 $this->Session->setFlash('Successfully Saved');
+		 $this->redirect(array('action'=>'index'));
+		} else {
+		 $this->Session->setFlash('The Data Was not saved, Please try again');
+}
+}
+		
+		
+		
+		
+		
 
 }
 
@@ -64,14 +78,14 @@ public function editclient($id = null) {
         throw new NotFoundException(__('Invalid post'));
     }
 
-    $post = $this->VpnSetting->findById($id);
+    $post = $this->VpnClient->findById($id);
     if (!$post) {
         throw new NotFoundException(__('Invalid post'));
     }
 
     if ($this->request->is(array('post', 'put'))) {
-        $this->VpnSetting->id = $id;
-        if ($this->VpnSetting->save($this->request->data)) {
+        $this->VpnClient->id = $id;
+        if ($this->VpnClient->save($this->request->data)) {
             $this->Session->setFlash(__('Your post has been updated.'));
             return $this->redirect(array('action' => 'index'));
         }
@@ -83,7 +97,7 @@ public function editclient($id = null) {
     }
 }
 
-public function editserver($id = null) {
+public function editvpn($id = null) {
     $this->loadmodel ('VpnServer');
 	if (!$id) {
         throw new NotFoundException(__('Invalid post'));
