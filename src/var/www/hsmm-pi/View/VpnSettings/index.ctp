@@ -1,6 +1,9 @@
 <h2>VPN Settings</h2>
+<span class="pull-right">
+  <?php echo $this->Form->submit(__('Apply Settings'), array('name' =>'submit', 'div' => false, 'class' => 'btn ntm-primary')); ?>
+</span>
+<br>
  <h4>VPN Client settings</h4>
- <?php echo $this->Html->link('Edit', array('action'=>'editclient', $vpnclient ['VpnClient']['id'])); ?>
 <table>
  <tr>
 	<th>Enabled</th>
