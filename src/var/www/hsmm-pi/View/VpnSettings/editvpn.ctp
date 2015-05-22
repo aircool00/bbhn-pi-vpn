@@ -2,7 +2,7 @@
 
 <?php
 echo $this->Form->create('VpnServer');
-echo $this->Form->input('erver_port');
+echo $this->Form->input('server_port');
 echo $this->Form->input('server_network');
 echo $this->Form->input('id', array('type'=>'hidden'));
 echo $this->Form->end('Save Settings');
