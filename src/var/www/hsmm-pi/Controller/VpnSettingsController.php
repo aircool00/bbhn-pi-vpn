@@ -9,13 +9,13 @@ class VpnSettingsController extends AppController{
 	public function index() {
 		
 		$this->set('vpnsettings', $this->VpnSetting->find('all'));
-		
+		$this->loadmodel('VpnClient');
         $this->set('vpnclients', $this->VpnClient->find('all'));
 		
-		 
+		$this->loadmodel('VpnServer'); 
 		$this->set('vpnservers', $this->VpnServer->find('all'));
         
-		if($this->request->isPost()) || $this->request->isPut()){
+		if($this->request->isPost() || $this->request->isPut()){
 		if($this->VpnSetting->save($this->request->data)){
 		 $latest_vpn_setting = $this->get_vpn_settings();
 		 
