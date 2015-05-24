@@ -1,6 +1,8 @@
 <h2>VPN Settings</h2>
 <span class="pull-right">
-  <?php echo $this->Form->submit(__('Apply Settings'), array('name' =>'submit', 'div' => false, 'class' => 'btn ntm-primary')); ?>
+  <?php 
+  $apply_img = $html->image('apply_settings.jpg, array('alt' => 'Apply Settings', 'title'=>'Apply Settings'));
+  echo $this->Html->link($apply_img, array('action' =>'createvpnconf'); ?>
 </span>
 <br>
  <h4>VPN Client settings</h4>

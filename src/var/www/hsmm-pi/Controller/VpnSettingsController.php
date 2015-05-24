@@ -15,18 +15,8 @@ class VpnSettingsController extends AppController{
 		$this->loadmodel('VpnServer'); 
 		$this->set('vpnservers', $this->VpnServer->find('all'));
         
-		if($this->request->isPost() || $this->request->isPut()){
-		if($this->VpnSetting->save($this->request->data)){
-		 $latest_vpn_setting = $this->get_vpn_settings();
-		 
-		 $this->render_vtun_config($latest_vpn_setting);
-		 
-		 
-		 $this->Session->setFlash('Successfully Saved');
-		 $this->redirect(array('action'=>'index'));
-		} else {
-		 $this->Session->setFlash('The Data Was not saved, Please try again');
-}
+		
+		
 }
 		
 		
@@ -129,8 +119,13 @@ public function editvpn($id = null) {
 
 
 Public function email(){
-	
+ return $this->redirect(array('action' => 'index'));	
 }
+
+Public function createvpnconf(){
+ return $this->redirect(array('action' => 'index'));	
+}
+
 
 //this is a for vtund.conf to add the callsign, ip addresses, and passwords 
   private function render_vpn_client_config($network_setting)  {
