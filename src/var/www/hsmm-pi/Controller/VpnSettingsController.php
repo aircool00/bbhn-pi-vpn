@@ -18,13 +18,6 @@ class VpnSettingsController extends AppController{
 		
 		
 }
-		
-		
-		
-		
-		
-
-}
 
 Public function add() {
 	if($this->request->is('post')) {
