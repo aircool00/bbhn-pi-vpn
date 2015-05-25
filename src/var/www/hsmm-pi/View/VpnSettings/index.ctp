@@ -1,6 +1,7 @@
 <h2>VPN Settings</h2>
 <span class="pull-right">
-   <?php echo $this->Html->image('apply_settings.jpg', array('action' =>'createvpnconf')); ?>
+    <?php echo $this->Html->image('apply_settings.jpg', ["alt" => "Apply",
+        'url' => ['controller' => 'VpnSettings', 'action' => 'createvpnconf']]); ?>   
 </span>
 <br>
  <h4>VPN Client settings</h4>
