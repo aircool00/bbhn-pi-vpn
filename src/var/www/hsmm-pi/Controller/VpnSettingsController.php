@@ -1,6 +1,9 @@
 <?php
 class VpnSettingsController extends AppController{
-	
+App::uses('Folder', 'Utility');
+App::uses('File', 'Utility');
+	$vtundfolder = new folder('/etc');
+	$vtunfolder = new folder('/etc/default')
 	var $name = 'VpnSettings';
 
 
@@ -116,7 +119,12 @@ Public function email(){
 }
 
 Public function createvpnconf(){
- return $this->redirect(array('action' => 'index'));	
+ $file = new File(TMP.'test.txt', true);
+$file->append('hello world');
+ 
+ return $this->redirect(array('action' => 'index'));
+
+ 
 }
 
 
