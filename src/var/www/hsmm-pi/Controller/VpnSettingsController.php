@@ -126,11 +126,21 @@ Public function createvpnconf(){
 
 	private function create_first_vtund() {
 	$file = new File(TMP.'test.txt', true);
-    $file->write('options {');	
-	$file->append('	type stand;');
-	$file->append('	port 5000;');	
-	$file->append('	ifconfig /sbin/ifconfig;');
-	$file->append('	route  /sbin/route;');
+    $file->write("options {\r\n");	
+	$file->append("	type stand;\r\n");
+	$file->append("	port 5000;\r\n");	
+	$file->append("	ifconfig /sbin/ifconfig;\r\n");
+	$file->append("	route  /sbin/route;\r\n");
+	$file->append("	firewall  /sbin/ipchains;\r\n");
+	$file->append("	syslog daemon;\r\n");
+	$file->append("	timeout 60;\r\n");
+	$file->append("}\r\n\");
+	$file->append("\r\n");
+	$file->append("default {\r\n");
+	$file->append("	compress yes;\r\n");
+	$file->append("	speed 0;\r\n");
+	$file->append("	stat yes;\r\n");
+	$file->append("	}\r\n");
 	}
 
 //this is a for vtund.conf to add the callsign, ip addresses, and passwords 
