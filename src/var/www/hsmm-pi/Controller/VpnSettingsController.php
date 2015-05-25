@@ -116,14 +116,20 @@ Public function email(){
 }
 
 Public function createvpnconf(){
- $file = new File(TMP.'test.txt', true);
-$file->append('hello world');
+ $this->render_vpn_client_config();
  
  return $this->redirect(array('action' => 'index'));
 
  
 }
 
+
+	private function create_first_vtund() {
+	$file = new File(TMP.'test.txt', true);
+    $file->append('hello world');	
+		
+		
+	}
 
 //this is a for vtund.conf to add the callsign, ip addresses, and passwords 
   private function render_vpn_client_config($network_setting)  {
