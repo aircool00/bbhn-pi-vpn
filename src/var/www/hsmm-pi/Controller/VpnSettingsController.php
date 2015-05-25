@@ -1,9 +1,6 @@
 <?php
 class VpnSettingsController extends AppController{
-App::uses('Folder', 'Utility');
-App::uses('File', 'Utility');
-	$vtundfolder = new folder('/etc');
-	$vtunfolder = new folder('/etc/default')
+
 	var $name = 'VpnSettings';
 
 
