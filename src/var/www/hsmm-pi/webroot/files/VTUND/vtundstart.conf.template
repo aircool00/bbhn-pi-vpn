@@ -1,0 +1,28 @@
+
+options {
+  type stand;
+  port {server_port};
+  ifconfig /sbin/ifconfig;
+  route   /sbin/route;
+  firewall   /sbin/ipchains;
+  syslog daemon;
+  timeout 60;
+}
+
+default {
+  compress yes;
+  speed 0;
+  stat yes;
+}
+
+{callsign} {
+   passwd {server_password};
+   device tun0;
+   persist yes;
+   type tun;
+   proto tcp;
+   up {
+     ifconfig "%% {client_ip} pointopoint {server_ip}";
+     ifconfig "%% multicast";
+   };
+}
