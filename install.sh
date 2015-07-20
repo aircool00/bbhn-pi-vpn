@@ -8,7 +8,15 @@
 #
 # VPN set up origionaly done by ZL1FLY Robert Moody
 # Bruce Wattendorf W1BAW Added VPN install and UI and renamed BBHN-Pi-VPN
-# 
+#
+
+if [ "$(id -u)" = "0" ]
+  then echo "Please do not run as root, HTTP interface will not work"
+  exit
+fi
+
+
+ 
 PROJECT_HOME=${HOME}/bbhn-pi-vpn
 
 cd ${HOME}
@@ -46,7 +54,7 @@ sudo apt-get remove -y ifplugd
 	
 # Install cakephp with Pear
 sudo pear channel-discover pear.cakephp.org
-sudo pear install cakephp/CakePHP-2.4.10
+sudo pear install cakephp/CakePHP-2.6.7
 
 # Checkout the HSMM-Pi project
 if [ ! -e ${PROJECT_HOME} ]; then
@@ -97,6 +105,7 @@ if [ -L /etc/resolv.conf ]; then
     touch /etc/resolv.conf
 fi
 
+sudo bash -c "echo 'nameserver 8.8.8.8' > /etc/resolv.conf"
 sudo chgrp www-data /etc/resolv.conf
 sudo chmod g+w /etc/resolv.conf
 

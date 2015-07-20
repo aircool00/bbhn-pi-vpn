@@ -116,8 +116,13 @@ Public function email(){
 }
 
 Public function createvpnconf(){
- $this->render_vtundstart();
- $this->render_vtun_config();
+ 
+ $latest_network_setting = $this->get_network_settings();
+	$vpn_setting = $this->get_vpn_settings();
+ 
+ 
+ $this->render_vtundstart($latest_network_setting, $vpn_setting);
+ $this->render_vtun_config($vpn_setting);
  
  return $this->redirect(array('action' => 'index'));
 
@@ -125,46 +130,29 @@ Public function createvpnconf(){
 }
 
 
-	private function create_first_vtund() {
-	$file = new File(TMP.'test.txt', true);
-    $file->write("options {\r\n");	
-	$file->append("	type stand;\r\n");
-	$file->append("	port 5000;\r\n");	
-	$file->append("	ifconfig /sbin/ifconfig;\r\n");
-	$file->append("	route  /sbin/route;\r\n");
-	$file->append("	firewall  /sbin/ipchains;\r\n");
-	$file->append("	syslog daemon;\r\n");
-	$file->append("	timeout 60;\r\n");
-	$file->append("}\r\n");
-	$file->append("\r\n");
-	$file->append("default {"\r\n");
-	$file->append("	compress yes;\r\n");
-	$file->append("	speed 0;\r\n");
-	$file->append("	stat yes;\r\n");
-	$file->append("	}\r\n");
-	$file->append(['NetworkSetting']['server_password'])
-	}
+	
 
 	
 	
 	
 	
 //this is a for vtund.conf to add the callsign, ip addresses, and passwords 
-  private function render_vtundstart($network_setting)  {
+  private function render_vtundstart()  {
 	$vpnclient_conf = file_get_contents(WWW_ROOT . "/files/VTUND/vtundstart.conf.template");
 	$vpnclient_conf_output = str_replace(array('{server_port}','{callsign}','{server_password}','{client_ip}','{server_ip}'),
 												
-						array( $vpnserver['VpnServer']['server_port'],
+						array( $vpn_server['VpnServer']['server_port'],
 						       strtolower($network_setting['NetworkSetting']['callsign']),
 							   $vpnclient['VpnClient']['password'],
 							   $vpnclient['VpnClient']['client_ip'],
-							   $vonclient['VpnClient']['server_ip']);
+							   $vpnclient['VpnClient']['server_ip']),
+							   $vpnclient_conf);
 	
 							
     file_put_contents('/files/VTUND/staging/vtund.conf', $vpnclient_conf_output);
 	}
 	
-	private function render_vtun_config($network_setting) {
+	private function render_vtun_config() {
     $vtun_conf = file_get_contents(WWW_ROOT . "/files/VTUND/vtun.template");
     $vtun_conf_output = str_replace(array('{server_port}','{callsign}','{server_dns}'),
 	                                     array($network_setting['NetworkSetting']['server_port'],
