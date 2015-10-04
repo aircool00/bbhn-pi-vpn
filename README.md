@@ -115,7 +115,7 @@ Beaglebone Black Installation
 1. If installing over an SSH connection, then I recommend you install 'screen' (sudo apt-get install screen) to ensure that the installation script is not stopped prematurely if you lose connectivity.  This is optional, but I highly recommend using screen if installing over the network.  You can find more info on screen here: http://linux.die.net/man/1/screen
 1. Run the following commands to download the BBHN-Pi-VPN project and install
 
-        git clone https://github.com/bwattendorf/bbhn-pi-vpn.git
+        sudo git clone https://github.com/bwattendorf/bbhn-pi-vpn.git
         cd bbhn-pi-vpn
         git checkout tags/v0.4.0-1
         sh install.sh
