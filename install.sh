@@ -54,7 +54,7 @@ sudo apt-get remove -y ifplugd
 	
 # Install cakephp with Pear
 sudo pear channel-discover pear.cakephp.org
-sudo pear install cakephp/CakePHP-2.6.7
+sudo pear install -Z cakephp/CakePHP-2.6.7
 
 # Checkout the HSMM-Pi project
 if [ ! -e ${PROJECT_HOME} ]; then
@@ -101,8 +101,8 @@ sudo chmod 775 /etc/dnsmasq.d
 # directory structure.  Remove the symbolic link and replace with a file that
 # can be managed by HSMM-Pi.
 if [ -L /etc/resolv.conf ]; then
-    rm -f /etc/resolv.conf
-    touch /etc/resolv.conf
+   sudo rm -f /etc/resolv.conf
+    sudo touch /etc/resolv.conf
 fi
 
 sudo bash -c "echo 'nameserver 8.8.8.8' > /etc/resolv.conf"
