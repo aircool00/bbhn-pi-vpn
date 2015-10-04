@@ -74,10 +74,10 @@ sudo ln -s ${PROJECT_HOME}/src/var/www/index.html /var/www/
 
 # Create temporary directory used by HSMM-PI webapp, granting write priv's to www-data
 cd ${PROJECT_HOME}/src/var/www/hsmm-pi
-mkdir -p tmp/cache/models
-mkdir -p tmp/cache/persistent
-mkdir -p tmp/logs
-mkdir -p tmp/persistent
+sudo mkdir -p tmp/cache/models
+sudo mkdir -p tmp/cache/persistent
+sudo mkdir -p tmp/logs
+sudo mkdir -p tmp/persistent
 sudo chgrp -R www-data tmp
 sudo chmod -R 775 tmp
 
@@ -185,7 +185,7 @@ sudo mkdir -p /etc/default
 sudo cp ${PROJECT_HOME}/src/etc/default/olsrd /etc/default/olsrd
 
 cd /var/tmp
-rm -rf /var/tmp/olsrd
+sudo rm -rf /var/tmp/olsrd
 
 
 sudo rm -f /etc/olsrd.conf
