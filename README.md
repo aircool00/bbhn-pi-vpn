@@ -112,7 +112,7 @@ Beaglebone Black Installation
 1. on the Beagle Bone set the gate way and then add the name server to the Beagle Bone
 
 
-		sudo /sbin/route add default gw 192.168.7.1/screen
+		sudo /sbin/route add default gw 192.168.7.1
 		sudo nano /etc/resolv.config
 		
 		then add nameserver 8.8.8.8 to the bottom and save
