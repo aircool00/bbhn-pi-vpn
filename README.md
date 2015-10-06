@@ -110,6 +110,8 @@ Beaglebone Black Installation
 1. Change the password for the 'ubuntu' account
 1. To set up the Beagle Bone Black to use the usb port for network share on the PC first share the PC's ip port then 
 1. on the Beagle Bone set the gate way and then add the name server to the Beagle Bone
+
+
 		sudo /sbin/route add default gw 192.168.7.1/screen
 		sudo nano /etc/resolv.config
 		
