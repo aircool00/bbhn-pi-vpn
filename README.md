@@ -108,6 +108,12 @@ Beaglebone Black Installation
 1. Apply power to the Beaglebone Black
 1. Login to the Beaglebone Black through an SSH session or the console using the 'ubuntu' account
 1. Change the password for the 'ubuntu' account
+1. To set up the Beagle Bone Black to use the usb port for network share on the PC first share the PC's ip port then 
+1. on the Beagle Bone set the gate way and then add the name server to the Beagle Bone
+		sudo /sbin/route add default gw 192.168.7.1/screen
+		sudo nano /etc/resolv.config
+		
+		then add nameserver 8.8.8.8 to the bottom and save
 1. Install the development tools necessary to build OLSRD and retrieve the BBHN-Pi-VPN project:
 
         sudo apt-get upgrade
