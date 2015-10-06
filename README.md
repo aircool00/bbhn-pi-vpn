@@ -113,7 +113,7 @@ Beaglebone Black Installation
 
 
 		sudo /sbin/route add default gw 192.168.7.1
-		sudo nano /etc/resolv.config
+		sudo nano /etc/resolv.conf
 		
 		then add nameserver 8.8.8.8 to the bottom and save
 1. Install the development tools necessary to build OLSRD and retrieve the BBHN-Pi-VPN project:
