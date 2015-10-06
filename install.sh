@@ -10,10 +10,10 @@
 # Bruce Wattendorf W1BAW Added VPN install and UI and renamed BBHN-Pi-VPN
 #
 
-if [ "$(id -u)" = "0" ]
-  then echo "Please do not run as root, HTTP interface will not work"
-  exit
-fi
+#if [ "$(id -u)" = "0" ]
+#  then echo "Please do not run as root, HTTP interface will not work"
+#  exit
+#fi
 
 
  
