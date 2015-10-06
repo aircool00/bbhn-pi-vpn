@@ -22,7 +22,7 @@ PROJECT_HOME=${HOME}/bbhn-pi-vpn
 cd ${HOME}
 
 # Update list of packages
-sudo apt-get update
+sudo apt-get update -y
 
 
 
