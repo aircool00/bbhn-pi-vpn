@@ -58,10 +58,10 @@ sudo pear install -Z cakephp/CakePHP-2.6.7
 
 # Checkout the HSMM-Pi project
 if [ ! -e ${PROJECT_HOME} ]; then
-    git clone https://github.com/bwattendorf/bbhn-pi-vpn.git
+     sudo git clone https://github.com/bwattendorf/bbhn-pi-vpn.git
 else
     cd ${PROJECT_HOME}
-    git pull
+    sudo git pull
 fi
 
 # Set symlink to webapp
@@ -152,12 +152,12 @@ sudo service apache2 restart
 
 # Download and build olsrd
 cd /var/tmp
-git clone git://olsr.org/olsrd.git
+sudo git clone git://olsr.org/olsrd.git
 cd olsrd
 
 
 # Checkout the latest 0.6.8 
-git checkout release-0.6.8
+ sudo git checkout release-0.6.8
 
 
 # patch the Makefile configuration to produce position-independent code (PIC)
