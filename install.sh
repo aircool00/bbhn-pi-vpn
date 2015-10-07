@@ -146,6 +146,7 @@ fi
 # enable apache mod-rewrite
 cd /etc/apache2/mods-enabled
 sudo ln -fs ../mods-available/rewrite.load
+sudo mkdir /etc/apache2/conf.d
 sudo cp ${PROJECT_HOME}/src/etc/apache2/conf.d/hsmm-pi.conf /etc/apache2/conf.d/hsmm-pi.conf
 sudo service apache2 restart
 
@@ -163,7 +164,7 @@ cd olsrd
 # patch the Makefile configuration to produce position-independent code (PIC)
 # applies only to ARM architecture (i.e. Beaglebone/Beagleboard)
 if uname -m | grep -q arm -; then
-  printf "CFLAGS +=\t-fPIC\n" >> Makefile.inc
+  sudo sh -c 'printf "CFLAGS +=\t-fPIC\n" >> Makefile.inc'
 fi
 
 # build the OLSRD core
