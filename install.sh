@@ -148,6 +148,7 @@ cd /etc/apache2/mods-enabled
 sudo ln -fs ../mods-available/rewrite.load
 sudo mkdir /etc/apache2/conf.d
 sudo cp ${PROJECT_HOME}/src/etc/apache2/conf.d/hsmm-pi.conf /etc/apache2/conf.d/hsmm-pi.conf
+sudo cp ${PROJECT_HOME}/src/etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/000-default.conf
 sudo service apache2 restart
 
 
