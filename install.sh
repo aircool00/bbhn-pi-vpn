@@ -168,11 +168,11 @@ if uname -m | grep -q arm -; then
 fi
 
 # build the OLSRD core
-make
+sudo make
 sudo make install
 
 # build the OLSRD plugins (libs)
-make libs
+sudo make libs
 sudo make libs_install
 
 sudo mkdir -p /etc/olsrd
