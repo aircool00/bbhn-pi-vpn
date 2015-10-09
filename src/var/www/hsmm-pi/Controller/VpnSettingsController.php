@@ -1,31 +1,31 @@
 <?php
 class VpnSettingsController extends AppController{
 
-	var $name = 'VpnSettings';
+        var $name = 'VpnSettings';
 
 
-	public $helpers = array('Html', 'Session');
-	public $components = array('RequestHandler', 'Session');
-	public function index() {
-		
-		$this->set('vpnsettings', $this->VpnSetting->find('all'));
-		$this->loadmodel('VpnClient');
+        public $helpers = array('Html', 'Session');
+        public $components = array('RequestHandler', 'Session');
+        public function index() {
+
+                $this->set('vpnsettings', $this->VpnSetting->find('all'));
+                $this->loadmodel('VpnClient');
         $this->set('vpnclients', $this->VpnClient->find('all'));
-		
-		$this->loadmodel('VpnServer'); 
-		$this->set('vpnservers', $this->VpnServer->find('all'));
-        
-		
-		
+
+                $this->loadmodel('VpnServer');
+                $this->set('vpnservers', $this->VpnServer->find('all'));
+
+
+
 }
 
 Public function add() {
-	if($this->request->is('post')) {
-		if($this->VpnSetting->save($this->data)){
-		 $this->Session->setFlash('Successfully Saved');
-		 $this->redirect(array('action'=>'index'));
-		} else {
-		 $this->Session->setFlash('The Data Was not saved, Please try again');
+        if($this->request->is('post')) {
+                if($this->VpnSetting->save($this->data)){
+                 $this->Session->setFlash('Successfully Saved');
+                 $this->redirect(array('action'=>'index'));
+                } else {
+                 $this->Session->setFlash('The Data Was not saved, Please try again');
 }
 }
 }
@@ -62,7 +62,7 @@ Public function delete($id = null){
 
 public function editclient($id = null) {
     $this->loadmodel('VpnClient');
-	if (!$id) {
+        if (!$id) {
         throw new NotFoundException(__('Invalid post'));
     }
 
@@ -87,7 +87,7 @@ public function editclient($id = null) {
 
 public function editvpn($id = null) {
     $this->loadmodel ('VpnServer');
-	if (!$id) {
+        if (!$id) {
         throw new NotFoundException(__('Invalid post'));
     }
 
@@ -112,62 +112,46 @@ public function editvpn($id = null) {
 
 
 Public function email(){
- return $this->redirect(array('action' => 'index'));	
+ return $this->redirect(array('action' => 'index'));
 }
 
 Public function createvpnconf(){
- 
- $latest_network_setting = $this->get_network_settings();
-	$vpn_setting = $this->get_vpn_settings();
- 
- 
- $this->render_vtundstart($latest_network_setting, $vpn_setting);
- $this->render_vtun_config($vpn_setting);
- 
+$this->set('vpnsettings', $this->VpnSetting->find('all'));
+                $this->loadmodel('VpnClient');
+        $this->set('vpnclients', $this->VpnClient->find('all'));
+
+                $this->loadmodel('VpnServer');
+                $this->set('vpnservers', $this->VpnServer->find('all'));
+
+
+
+
+
+  $this->render_vtun_config();
+
+
+
+
+
  return $this->redirect(array('action' => 'index'));
 
- 
+
 }
 
 
-	
 
-	
-	
-	
-	
-//this is a for vtund.conf to add the callsign, ip addresses, and passwords 
-  private function render_vtundstart()  {
-	$vpnclient_conf = file_get_contents(WWW_ROOT . "/files/VTUND/vtundstart.conf.template");
-	$vpnclient_conf_output = str_replace(array('{server_port}','{callsign}','{server_password}','{client_ip}','{server_ip}'),
-												
-						array( $vpn_server['VpnServer']['server_port'],
-						       strtolower($network_setting['NetworkSetting']['callsign']),
-							   $vpnclient['VpnClient']['password'],
-							   $vpnclient['VpnClient']['client_ip'],
-							   $vpnclient['VpnClient']['server_ip']),
-							   $vpnclient_conf);
-	
-							
-    file_put_contents('/files/VTUND/staging/vtund.conf', $vpnclient_conf_output);
-	}
-	
-	private function render_vtun_config() {
-    $vtun_conf = file_get_contents(WWW_ROOT . "/files/VTUND/vtun.template");
-    $vtun_conf_output = str_replace(array('{server_port}','{callsign}','{server_dns}'),
-	                                     array($network_setting['NetworkSetting']['server_port'],
-										 strtolower($network_setting['NetworkSetting']['callsign']),
-										 $network_setting['NetworkSetting']['server_dns']), $vtun_conf);
-										 
-	file_put_contents('/files/VTUND/staging/vtun', $vtun_conf_output);
-	}	
+
+
+
+
+
+
+        private function render_vtun_config() {
+
+        file_put_contents('/files/VTUND/staging/vtun', "test");
+}
 }
 ?>	
-	
-	
-	
-	
-	
 	
 	
 	
