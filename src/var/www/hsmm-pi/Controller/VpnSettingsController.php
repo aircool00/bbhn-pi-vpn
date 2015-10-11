@@ -2,7 +2,7 @@
 class VpnSettingsController extends AppController{
 
 	var $name = 'VpnSettings';
-
+	public $uses = array();
 
 	public $helpers = array('Html', 'Session');
 	public $components = array('RequestHandler', 'Session');
@@ -117,50 +117,21 @@ Public function email(){
 
 Public function createvpnconf(){
  
- $latest_network_setting = $this->get_network_settings();
-	$vpn_setting = $this->get_vpn_settings();
- 
- 
- $this->render_vtundstart($latest_network_setting, $vpn_setting);
- $this->render_vtun_config($vpn_setting);
- 
+        $file = new File(TMP.'test.txt',true);
+        $file->append('hello');
  return $this->redirect(array('action' => 'index'));
-
- 
 }
 
 
+
+
 	
 
 	
 	
 	
 	
-//this is a for vtund.conf to add the callsign, ip addresses, and passwords 
-  private function render_vtundstart()  {
-	$vpnclient_conf = file_get_contents(WWW_ROOT . "/files/VTUND/vtundstart.conf.template");
-	$vpnclient_conf_output = str_replace(array('{server_port}','{callsign}','{server_password}','{client_ip}','{server_ip}'),
-												
-						array( $vpn_server['VpnServer']['server_port'],
-						       strtolower($network_setting['NetworkSetting']['callsign']),
-							   $vpnclient['VpnClient']['password'],
-							   $vpnclient['VpnClient']['client_ip'],
-							   $vpnclient['VpnClient']['server_ip']),
-							   $vpnclient_conf);
-	
-							
-    file_put_contents('/files/VTUND/staging/vtund.conf', $vpnclient_conf_output);
-	}
-	
-	private function render_vtun_config() {
-    $vtun_conf = file_get_contents(WWW_ROOT . "/files/VTUND/vtun.template");
-    $vtun_conf_output = str_replace(array('{server_port}','{callsign}','{server_dns}'),
-	                                     array($network_setting['NetworkSetting']['server_port'],
-										 strtolower($network_setting['NetworkSetting']['callsign']),
-										 $network_setting['NetworkSetting']['server_dns']), $vtun_conf);
-										 
-	file_put_contents('/files/VTUND/staging/vtun', $vtun_conf_output);
-	}	
+
 }
 ?>	
 	
