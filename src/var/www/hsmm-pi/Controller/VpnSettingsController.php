@@ -116,21 +116,30 @@ Public function email(){
 }
 
 Public function createvpnconf(){
- 
+
+
         $file = new File(TMP.'test.txt',true);
-        $file->append('hello');
- return $this->redirect(array('action' => 'index'));
+        $file->write('options {
+   type stand;
+   port 5000;
+   ifconfig /sbin/ifconfig;
+   route  /sbin/route;
+   firewall   /sbin/ipchains;
+   syslog daemons;
+   timeout 60;
 }
 
+default {
+  compress yes;
+  speed 0;
+  stat yes;
+}
+');
 
-
-
 	
-
+return $this->redirect(array('action' => 'index'));	
 	
-	
-	
-	
+}
 
 }
 ?>	
