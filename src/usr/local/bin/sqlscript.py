@@ -32,7 +32,7 @@ text_file.write("   persist yes;\n")
 text_file.write("   type tun;\n")
 text_file.write("   proto tcp;\n")
 text_file.write("   up {\n")
-text_file.write("     ifconfig %% ")  #note i need to figure out how to make it so I can add "
+text_file.write("     ifconfig \" %% ")  #note to add a " in a string use \ before quote   example \"
 
 text_file.write("server_ip ")
 text_file.write(', '.join(serverip))
